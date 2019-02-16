@@ -54,3 +54,7 @@ Locomotion System
 * synchro-drive 
 * tricycle
 * car-like
+
+## Direct Kinematics
+* open: when there is only one sequence of links connecting the two ends of the chain
+* closed: when a sequence of links forms a loop.
