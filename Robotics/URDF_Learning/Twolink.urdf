@@ -1,0 +1,94 @@
+<robot name="pi_robot">
+<link name="base">
+	<visual>
+		<geometry>
+			<cylinder radius="0.1" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 -0.1" />
+	</visual>
+</link>
+
+<link name="base_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="white">
+	        <color rgba="1 1 1 1"/>
+	    </material>
+	</visual>
+</link>
+
+
+
+<link name="second_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<material name="white">
+	        <color rgba="1 1 1 1"/>
+	    </material>		
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+</link>
+
+<link name="arm_1">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="blue">
+	        <color rgba="0 0 0.9 1.0"/>
+	    </material>
+	</visual>
+</link>
+
+<link name="arm_2">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="blue">
+	        <color rgba="0 0 0.9 1.0"/>
+	    </material>
+	</visual>
+</link>
+
+
+<!-- d = 0.5, r = 0.5, alpha=0.157075, theta= -->
+
+<joint name="base_joint" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="base"/>
+	<child link="base_cylinder" />
+  	<origin xyz="0 0 0"/>
+</joint>
+
+<joint name="joint1" type="fixed">
+	<axis xyz="0 0 1"/>
+	<parent link="base_cylinder"/>
+	<child link="arm_1" />
+  	<origin xyz="0 0.15 0"/>
+</joint>
+
+<joint name="joint2" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="arm_1"/>
+	<child link="second_cylinder" />
+  	<origin xyz="0 .15 0"/>
+</joint>
+
+<joint name="joint3" type="fixed">
+	<axis xyz="0 0 1"/>
+	<parent link="second_cylinder"/>
+	<child link="arm_2" />
+  	<origin xyz="0 .15 0"/>
+</joint>
+
+
+
+</robot>
