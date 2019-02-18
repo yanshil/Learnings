@@ -1,4 +1,4 @@
-## Online Demo
+## Online URDF file loading Demo
 https://mymodelrobot.appspot.com
 
 ## URDF: Link and Frame representation
