@@ -16,3 +16,10 @@ https://www.youtube.com/watch?v=vEpxPfCTwe4
 * DH Convention 2.8.2 (Transformation Matrix from frame 0 to frame n)
 * Operation form a closed chain manipulator
 
+## Check_urdf
+
+http://wiki.ros.org/urdf/Tutorials/Create%20your%20own%20urdf%20file
+
+```
+sudo apt-get install liburdfdom-tools
+```
