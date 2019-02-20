@@ -1,4 +1,5 @@
-<robot name="pi_robot">
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="robot">
 <link name="base">
 	<visual>
 		<geometry>
@@ -6,6 +7,12 @@
 		</geometry>
 		<origin rpy="0 0 0" xyz="0 0 -0.1" />
 	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.1" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 -0.1" />
+	</collision>
 </link>
 
 <link name="base_cylinder">
@@ -13,11 +20,15 @@
 		<geometry>
 			<cylinder radius="0.05" length=".1" />
 		</geometry>
-		<material name="white">
-	        <color rgba="1 1 1 1"/>
-	    </material>
+		<material name="white"/>
 		<origin rpy="0 0 0" xyz="0 0 0" />
 	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 
@@ -27,11 +38,15 @@
 		<geometry>
 			<cylinder radius="0.05" length=".1" />
 		</geometry>
-		<material name="white">
-	        <color rgba="1 1 1 1"/>
-	    </material>		
+		<material name="white"/>
 		<origin rpy="0 0 0" xyz="0 0 0" />
 	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 
@@ -41,11 +56,15 @@
 		<geometry>
 			<cylinder radius="0.05" length=".1" />
 		</geometry>
-		<material name="white">
-	        <color rgba="1 1 1 1"/>
-	    </material>		
+		<material name="white"/>
 		<origin rpy="0 0 0" xyz="0 0 0" />
 	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 
@@ -55,10 +74,14 @@
 			<box size=".05 .3 .05"/>
 		</geometry>
 		<origin rpy="0 0 0" xyz="0 0 0" />
-		<material name="blue">
-	        <color rgba="0 0 0.9 1.0"/>
-	    </material>
+		<material name="blue"/>
 	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 <link name="arm_2">
@@ -67,10 +90,14 @@
 			<box size=".05 .3 .05"/>
 		</geometry>
 		<origin rpy="0 0 0" xyz="0 0 0" />
-		<material name="blue">
-	        <color rgba="0 0 0.9 1.0"/>
-	    </material>
+		<material name="blue"/>
 	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 <link name="arm_3">
@@ -79,10 +106,14 @@
 			<box size=".05 .3 .05"/>
 		</geometry>
 		<origin rpy="0 0 0" xyz="0 0 0" />
-		<material name="blue">
-	        <color rgba="0 0 0.9 1.0"/>
-	    </material>
+		<material name="blue"/>
 	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
 </link>
 
 
@@ -93,12 +124,14 @@
 	<parent link="base"/>
 	<child link="base_cylinder" />
   	<origin xyz="0 0 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 <joint name="joint_c1_arm1" type="fixed">
 	<parent link="base_cylinder"/>
 	<child link="arm_1" />
   	<origin xyz="0 0.15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 <joint name="joint_arm1_c2" type="revolute">
@@ -106,12 +139,14 @@
 	<parent link="arm_1"/>
 	<child link="second_cylinder" />
   	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 <joint name="joint_c2_arm2" type="fixed">
 	<parent link="second_cylinder"/>
 	<child link="arm_2" />
   	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 
@@ -120,14 +155,22 @@
 	<parent link="arm_2"/>
 	<child link="third_cylinder" />
   	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 <joint name="joint_c3_arm3" type="fixed">
 	<parent link="third_cylinder"/>
 	<child link="arm_3" />
   	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
-
+<!-- Material -->
+<material name="white">
+    <color rgba="1 1 1 1"/>
+</material>
+<material name="blue">
+    <color rgba="0 0 0.9 1.0"/>
+</material>
 
 </robot>
