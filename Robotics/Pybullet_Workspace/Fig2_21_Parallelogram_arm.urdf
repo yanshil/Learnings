@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="parralelogram_arm">
+
+
+<!-- //////////////////////// Link and Joints //////////////////////// -->
+
+
+<link name="base">
+	<visual>
+		<geometry>
+			<box size="2 2 0.1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 -0.05" />
+	</visual>
+	<collision>
+		<geometry>
+			<box size="2 2 0.1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 -0.05" />
+	</collision>
+</link>
+
+
+<link name="first_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<material name="white"/>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+
+
+<link name="second_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<material name="white"/>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+
+
+<link name="third_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<material name="white"/>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+<link name="forth_cylinder">
+	<visual>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<material name="white"/>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+
+<link name="arm_1">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="blue"/>
+	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+<link name="first_cylinder_prime">
+	<visual>
+		<geometry>
+			<cylinder radius="0.04" length=".1" />
+		</geometry>
+		<material name="green"/>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</visual>
+	<collision>
+		<geometry>
+			<cylinder radius="0.05" length=".1" />
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+
+<link name="arm_1_prime">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 1.57" xyz="0 0 0" />
+		<material name="blue"/>
+	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 1.57" xyz="0 0 0" />
+	</collision>
+</link>
+
+<joint name="joint_c1_arm1_prime" type="fixed">
+	<parent link="first_cylinder_prime"/>
+	<child link="arm_1_prime" />
+  	<origin xyz="0.15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+<joint name="base_joint_prime" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="base"/>
+	<child link="first_cylinder_prime" />
+  	<origin xyz="0 0 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+
+
+<link name="arm_2">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="blue"/>
+	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+<link name="arm_3">
+	<visual>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<material name="blue"/>
+	</visual>
+	<collision>
+		<geometry>
+			<box size=".05 .3 .05"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+	</collision>
+</link>
+
+
+<!-- d = 0.5, r = 0.5, alpha=0.157075, theta= -->
+
+<joint name="base_joint" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="base"/>
+	<child link="first_cylinder" />
+  	<origin xyz="0 0 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+<joint name="joint_c1_arm1" type="fixed">
+	<parent link="first_cylinder"/>
+	<child link="arm_1" />
+  	<origin xyz="0 0.15 0"/>
+</joint>
+
+<joint name="joint_arm1_c2" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="arm_1"/>
+	<child link="second_cylinder" />
+  	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+<joint name="joint_c2_arm2" type="fixed">
+	<parent link="second_cylinder"/>
+	<child link="arm_2" />
+  	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+
+<joint name="joint_arm2_c3" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="arm_2"/>
+	<child link="third_cylinder" />
+  	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+<joint name="joint_c3_arm3" type="fixed">
+	<parent link="third_cylinder"/>
+	<child link="arm_3" />
+  	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+<joint name="joint_arm3_c4" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="arm_3"/>
+	<child link="forth_cylinder" />
+  	<origin xyz="0 .15 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
+
+
+
+<!-- Material -->
+<material name="white">
+    <color rgba="1 1 1 1"/>
+</material>
+<material name="blue">
+    <color rgba="0 0 0.9 1.0"/>
+</material>
+
+<material name="green">
+    <color rgba="0 1 0 1"/>
+</material>
+
+<!-- //////////////////////// END ////////////////////////-->
+
+</robot>
