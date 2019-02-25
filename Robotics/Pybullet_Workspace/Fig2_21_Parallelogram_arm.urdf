@@ -142,7 +142,7 @@
 <joint name="joint_c1_arm1_prime" type="fixed">
 	<parent link="first_cylinder_prime"/>
 	<child link="arm_1_prime" />
-  	<origin xyz="0.15 0"/>
+  	<origin xyz="0.15 0 0"/>
   	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
