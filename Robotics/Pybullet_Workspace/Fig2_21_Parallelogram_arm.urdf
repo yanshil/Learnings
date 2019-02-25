@@ -139,22 +139,6 @@
 	</collision>
 </link>
 
-<joint name="joint_c1_prime_arm1_prime" type="fixed">
-	<parent link="first_cylinder_prime"/>
-	<child link="arm_1_prime" />
-  	<origin xyz="0.15 0 0"/>
-  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
-</joint>
-
-<joint name="base_joint_prime" type="revolute">
-	<axis xyz="0 0 1"/>
-	<parent link="base"/>
-	<child link="first_cylinder_prime" />
-  	<origin xyz="0 0 0"/>
-  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
-</joint>
-
-
 
 <link name="arm_2">
 	<visual>
@@ -266,12 +250,11 @@
   	<origin xyz="0 .15 0"/>
 </joint>
 
-<joint name="joint_arm3_c4" type="revolute">
+<joint name="joint_arm3_c4" type="fixed">
 	<axis xyz="0 0 1"/>
 	<parent link="arm_3"/>
 	<child link="forth_cylinder" />
   	<origin xyz="0 .15 0" rpy="0 0 0"/>
-  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
 <joint name="joint_c4_arm4" type="fixed">
@@ -280,14 +263,29 @@
   	<origin xyz="0 .15 0"/>
 </joint>
 
-<joint name="joint_arm_prime_c4_prime" type="revolute">
+<joint name="joint_arm_prime_c4_prime" type="fixed">
 	<axis xyz="0 0 1"/>
 	<parent link="arm_1_prime"/>
 	<child link="forth_cylinder_prime" />
   	<origin xyz=".15 0 0" rpy="0 0 0"/>
+  	<!-- <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/> -->
+</joint>
+
+
+<joint name="joint_c1_prime_arm1_prime" type="fixed">
+	<parent link="first_cylinder_prime"/>
+	<child link="arm_1_prime" />
+  	<origin xyz="0.15 0 0"/>
   	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
 </joint>
 
+<joint name="base_joint_prime" type="revolute">
+	<axis xyz="0 0 1"/>
+	<parent link="base"/>
+	<child link="first_cylinder_prime" />
+  	<origin xyz="0 0 0"/>
+  	<limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+</joint>
 
 
 <!-- Material -->
